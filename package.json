@@ -2,9 +2,10 @@
   "name": "swiss-api",
   "version": "0.0.1",
   "description": "API for getting Houses and planets by a date and position",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,12 @@
   "bugs": {
     "url": "https://github.com/sajt/swiss-api/issues"
   },
-  "homepage": "https://github.com/sajt/swiss-api#readme"
+  "homepage": "https://github.com/sajt/swiss-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.14.3"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.7"
+  }
 }
