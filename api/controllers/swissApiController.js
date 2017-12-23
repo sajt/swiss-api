@@ -1,26 +1,24 @@
-'use strict';
 const swisseph = require ('swisseph');
 
 exports.get = function(req, res) {
   //TODO add validation
   var options = req.body;
   //res.status(500).send('Something broke!')
-
-  swisseph.swe_set_ephe_path (__dirname + '/ephem');
-
+  swisseph.swe_set_ephe_path (__dirname + '/../../ephe');
+  //console.log(options);
   var utc = swisseph.swe_utc_time_zone(
-    options.year,
-    options.month,
-    options.day,
-    options.hour,
-    options.minute,
-    options.second,
-    options.timezone);
-
+    parseInt(options.year),
+    parseInt(options.month),
+    parseInt(options.day),
+    parseInt(options.hour),
+    parseInt(options.minute),
+    parseInt(options.second),
+    parseInt(options.timezone));
   var longitude = lanlot(options.longitude);
   var lattitude = lanlot(options.lattitude);
   var houses = [];
   var planets = {};
+  var p, planet;
 
   try{
     swisseph.swe_utc_to_jd(utc.year, utc.month, utc.day, utc.hour, utc.minute, utc.second, swisseph.SE_GREG_CAL, function(julianDay) {
@@ -28,24 +26,24 @@ exports.get = function(req, res) {
         ret.house.forEach(function (house, index) {
           houses.push(house);
         });
-        for (let p = swisseph.SE_SUN; p <= swisseph.SE_CHIRON; p++) {
+        for (p = swisseph.SE_SUN; p <= swisseph.SE_INTP_PERG; p++) {
           swisseph.swe_calc_ut(julianDay.julianDayUT, p, swisseph.SEFLG_SPEED, function(ret) {
-            let planet = swisseph.swe_get_planet_name(p);
+            planet = swisseph.swe_get_planet_name(p);
             planets[planet.name.toLowerCase()] = ret.longitude;
           });
         }
+        res.json(
+          {
+            houses: houses,
+            planets: planets
+          });
       });
     });
   } catch(e) {
     res.status(500).send(e.message);
     console.log(e);
   }
-  console.log(houses);
-  res.json(
-    {
-      houses: houses,
-      planets: planets
-    });
+
 };
 
 
