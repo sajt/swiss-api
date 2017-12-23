@@ -1,6 +1,6 @@
 {
   "name": "swiss-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "API for getting Houses and planets by a date and position",
   "main": "server.js",
   "scripts": {
@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "express": "^4.16.2",
-    "mongoose": "^4.13.7"
+    "mongoose": "^4.13.7",
+    "swisseph": "^0.5.8"
   }
 }
