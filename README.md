@@ -23,3 +23,10 @@ You can post the following data
 ```
 
 You could get back a json, with an array of houses and an associative array of planets
+
+With curl:
+```
+curl -X POST https://swiss-api.herokuapp.com/swiss \
+  -H 'Content-Type: application/json' \
+  -d '{"year": 2007, "month": 1, "day": 1, "hour": 12, "minute": 1, "second": 0, "timezone" : 1, "longitude": 19.73, "lattitude": 47.19}'
+```
