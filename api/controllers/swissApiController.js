@@ -1,11 +1,11 @@
 const swisseph = require("swisseph");
+const parseDMS = require("parse-dms");
 
 exports.get = function (req, res) {
   //TODO add validation
   var options = req.body;
   //res.status(500).send('Something broke!')
   swisseph.swe_set_ephe_path(__dirname + "/../../ephe");
-  //console.log(options);
   var utc = swisseph.swe_utc_time_zone(
     parseInt(options.year),
     parseInt(options.month),
