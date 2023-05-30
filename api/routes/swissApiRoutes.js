@@ -5,4 +5,5 @@ module.exports = function(app) {
   // todoList Routes
   app.route('/swiss')
     .post(swissApi.get);
+  app.route('/').get(swissApi.index);
 };

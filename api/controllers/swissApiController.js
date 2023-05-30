@@ -1,6 +1,8 @@
 const swisseph = require("swisseph");
 const parseDMS = require("parse-dms");
-
+exports.index = function(req,res) {
+  res.send("This is working as usual!");
+};
 exports.get = function(req,res) {
   //TODO add validation
   var options = req.body;
