@@ -1,9 +1,10 @@
-const swisseph = require("swisseph");
+const swisseph = require("swisseph-v2");
 const parseDMS = require("parse-dms");
 exports.index = function(req,res) {
   res.send("This is working as usual!");
 };
 exports.get = function(req,res) {
+  console.log(req);
   //TODO add validation
   var options = req.body;
   //res.status(500).send('Something broke!')
